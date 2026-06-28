@@ -38,6 +38,46 @@ date_range = (rel_df['date'].max() - rel_df['date'].min()).days + 1
 st.title("📊 Isla Carolina Hurricane Maris Recovery Operations")
 
 
+# Infrastructure map
+op_status = ['Fully Operational', 'Partially Operational', 'Non-Operational']
+colors = ['green','orange','red']
+op_code = ['Operational','Partly Operational','Not Operational']
+stat_color = dict(zip(op_status,colors))
+code = dict(zip(op_status,op_code))
+
+facility_icon = {'Supply Distribution Center':'truck', 
+            'Bridge':'road',
+            'Water Treatment Plant':'tint' ,
+            'Power Substation':'bolt',
+            'School (Shelter)':'home',
+            'Fire Station':'fire-extinguisher',
+            'Shelter':'home',
+            'Health Clinic':'medkit',
+            'Hospital':'h-square',
+            'Communications Tower':'podcast'}
+
+m1 = folium.Map(location=map_center, zoom_start=9, tiles="CartoDB positron")
+
+for _, row in inf_df.iterrows():
+    folium.Marker(location=[row['latitude'],row['longitude']],
+                  popup=f"{row['municipality']}\n{row['facility_name'].rsplit(maxsplit=1)[-1]}\n{row['facility_type']}\nOpStatus={code[row['operational_status']]}\nSeverity={row['damage_severity']}\nPop={row['population_served']}",
+                  icon=folium.Icon(color=stat_color[row["operational_status"]],prefix='fa',icon=facility_icon[row['facility_type']])
+                 ).add_to(m1)
+   
+legend_html = '''
+<div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 200px; height: 100px; 
+     border:2px solid grey; z-index:9999; font-size:14px;
+     background-color:white; opacity: 0.85;">
+     &nbsp; <b>Facility Status</b> <br>
+     &nbsp; Operational &nbsp; <i class="fa fa-circle" style="color:green"></i><br>
+     &nbsp; Partially Operational &nbsp; <i class="fa fa-circle" style="color:orange"></i><br>
+     &nbsp; Not Operational &nbsp; <i class="fa fa-circle" style="color:red"></i><br>
+</div>
+'''
+m1.get_root().html.add_child(folium.Element(legend_html))
+
+
 # Tab layout
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Infrastructure", "Recovery", "Performance", "Actions", "About"])
 
@@ -48,7 +88,7 @@ with tab1:
     st.markdown("""
     
     """)
-    #st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig1-1, use_container_width=True)
     #st.plotly_chart(fig2, use_container_width=True)
     #st.plotly_chart(fig3, use_container_width=True)
 
