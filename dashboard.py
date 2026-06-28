@@ -24,7 +24,7 @@ data_path = SCRIPT_DIR
 # Data import
 infrastructure = data_path / "isla_coralina_infrastructure.csv"
 inf_df = pd.read_csv(infrastructure)
-inf_df['date'] = pd.to_datetime(inf_df['date'])
+inf_df['date_last_update'] = pd.to_datetime(inf_df['date_last_update'])
 
 reliefops = data_path / "isla_coralina_relief_operations.csv"
 rel_df = pd.read_csv(reliefops)
