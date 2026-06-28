@@ -9,6 +9,7 @@ import pandas as pd
 from pathlib import Path
 import plotly.express as px
 import folium
+import streamlit-folium
 from folium.plugins import HeatMap
 from IPython.display import display, IFrame
 import streamlit as st
@@ -88,7 +89,7 @@ with tab1:
     st.markdown("""
     
     """)
-    st.plotly_chart(m1, use_container_width=True)
+    st_folium(m1, width=700, height=500)
     #st.plotly_chart(fig2, use_container_width=True)
     #st.plotly_chart(fig3, use_container_width=True)
 
