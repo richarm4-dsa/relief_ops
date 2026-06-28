@@ -88,7 +88,7 @@ with tab1:
     st.markdown("""
     
     """)
-    st.plotly_chart(fig1-1, use_container_width=True)
+    st.plotly_chart(m1, use_container_width=True)
     #st.plotly_chart(fig2, use_container_width=True)
     #st.plotly_chart(fig3, use_container_width=True)
 
