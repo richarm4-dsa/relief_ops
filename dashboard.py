@@ -89,7 +89,7 @@ with tab1:
     st.markdown("""
     
     """)
-    st_folium(m1, use_container_width=True)
+    st_folium(m1, width=700, height=500)
     #st.plotly_chart(fig2, use_container_width=True)
     #st.plotly_chart(fig3, use_container_width=True)
 
