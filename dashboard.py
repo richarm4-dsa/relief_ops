@@ -174,6 +174,24 @@ legend_html = """
 m2.get_root().html.add_child(folium.Element(legend_html))
 
 
+### TAB 2 - Recovery Status
+# Delivery delay by tx mode
+fig = px.box(
+    rel_df,
+    x='municipality',
+    y='delivery_delay_hours',
+    color='transport_mode', 
+    title='Delivery Delay for Transport Modes by Municipality',
+    labels={
+        'delivery_delay_hours': 'Delay (hours)',
+        'transport_mode': 'Mode',
+        'municipality': 'Municipality'
+    },
+)
+fig.show()
+
+
+
 ### TAB 3 - Key Performance Indicators
 # Requested vs Delivered
 delivery = rel_df.groupby('municipality')[['quantity_requested','quantity_delivered']].sum().reset_index()
