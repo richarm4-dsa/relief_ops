@@ -167,9 +167,11 @@ with tab1:
     
     """)
     st_folium(m1, width=700, height=500)
-    #st.plotly_chart(fig2, use_container_width=True)
-    #st.plotly_chart(fig3, use_container_width=True)
-
+    st.markdown("""
+    A minimum radius should be maintained between hospitals and between water treatment plants. 
+    The following map shows a 15 mile radius around hospitals and a 30 mile radius around water treatment plants. 
+    """)
+    st_folium(m2, width=700, height=500)            
 
 # Recovery
 with tab2:
