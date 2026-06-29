@@ -57,6 +57,13 @@ facility_icon = {'Supply Distribution Center':'truck',
             'Hospital':'h-square',
             'Communications Tower':'podcast'}
 
+selected_types = st.multiselect(
+    "Facility Types",
+    sorted(inf_df["facility_type"].unique()),
+    default=sorted(inf_df["facility_type"].unique()),
+    label_visibility="collapsed"
+)
+
 filtered_df = inf_df[
     inf_df["facility_type"].isin(selected_types)
 ]
@@ -243,14 +250,6 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Infrastructure", "Recovery", "Performan
 # Damage
 with tab1:
     st.header("Infrastructure and Damage Assessment")
-
-    # Compact filter bar (not sidebar, not columns)
-    selected_types = st.multiselect(
-        "Facility Types",
-        sorted(inf_df["facility_type"].unique()),
-        default=sorted(inf_df["facility_type"].unique()),
-        label_visibility="collapsed"
-    )
 
     st_folium(m1, width=700, height=500)
     st.markdown("""
