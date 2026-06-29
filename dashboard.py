@@ -59,11 +59,17 @@ facility_icon = {'Supply Distribution Center':'truck',
 
 m1 = folium.Map(location=map_center, zoom_start=8, tiles="CartoDB positron")
 
+groups = {}
+
+for facility_type in inf_df['facility_type'].unique():
+    groups[facility_type] = folium.FeatureGroup(name=facility_type)
+    groups[facility_type].add_to(m1)
+
 for _, row in inf_df.iterrows():
     folium.Marker(location=[row['latitude'],row['longitude']],
                   popup=f"{row['municipality']}\n{row['facility_name'].rsplit(maxsplit=1)[-1]}\n{row['facility_type']}\nOpStatus={code[row['operational_status']]}\nSeverity={row['damage_severity']}\nPop={row['population_served']}",
                   icon=folium.Icon(color=stat_color[row["operational_status"]],prefix='fa',icon=facility_icon[row['facility_type']])
-                 ).add_to(m1)
+                 ).add_to(groups[row['facility_type']])
 
 legend_html = """
 <div style="
