@@ -190,6 +190,20 @@ fig2_1 = px.box(
 )
 fig2_1.show()
 
+# Delivery Delay by Supply Type
+supply_mun = rel_df.groupby(['municipality','supply_type'])['delivery_delay_hours'].mean().reset_index()
+fig2_2 = px.bar(supply_mun,
+             y='supply_type',
+             x='delivery_delay_hours',
+             color='municipality',
+             barmode='stack',
+             title='Delivery Delay by Supply Type',
+             labels={
+                 'supply_type':'Supply Type',
+                 'delivery_delay_hours':'Delay (hours)',
+                 'municipality':'Municipality'
+             })
+fig2_2.show()
 
 
 ### TAB 3 - Key Performance Indicators
@@ -253,8 +267,7 @@ with tab2:
     st.markdown("""
     """)
     st.plotly_chart(fig2_1, use_container_width=True)
-    #st.plotly_chart(fig2, use_container_width=True)
-    #st.plotly_chart(fig3, use_container_width=True)
+    st.plotly_chart(fig2_2, use_container_width=True)
 
 # KPIs
 with tab3:
@@ -264,7 +277,6 @@ with tab3:
     """)
     st.plotly_chart(fig3_1, use_container_width=True)
     st.plotly_chart(fig3_2, use_container_width=True)
-
 
 # Actions/Analyses
 with tab4:
