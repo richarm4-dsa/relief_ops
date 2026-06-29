@@ -174,6 +174,27 @@ legend_html = """
 m2.get_root().html.add_child(folium.Element(legend_html))
 
 
+### TAB 3 - Key Performance Indicators
+# Requested vs Delivered
+delivery = df.groupby('municipality')[['quantity_requested','quantity_delivered']].sum().reset_index()
+fig3_1 = px.bar(
+    delivery,
+    x='municipality',
+    y=['quantity_requested', 'quantity_delivered'],
+    barmode='stack',
+    title='Supply Delivery by Municipality: Fulfilled Against Requested',
+    #text='pct_delivered',
+    labels={
+        'municipality': 'Municipality',
+        'value': 'Quantity',
+        'quantity_requested': 'Requested',
+        'quantity_delivered': 'Delivered'
+    },
+)
+fig3_1.update_layout(legend_title_text='Delivery')
+fig3_1.show()
+
+
 # Tab layout
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Infrastructure", "Recovery", "Performance", "Actions", "About"])
 
@@ -209,7 +230,7 @@ with tab3:
     st.markdown("""
     
     """)
-    #st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig3_1, use_container_width=True)
     #st.plotly_chart(fig2, use_container_width=True)
     #st.plotly_chart(fig3, use_container_width=True)
 
