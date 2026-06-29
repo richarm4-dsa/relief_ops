@@ -195,7 +195,7 @@ fig3_1.update_layout(legend_title_text='Delivery')
 fig3_1.show()
 
 # Delay timeline
-bydate_mun = df.groupby(['date','municipality'], as_index=False)['delivery_delay_hours'].mean()
+bydate_mun = rel_df.groupby(['date','municipality'], as_index=False)['delivery_delay_hours'].mean()
 fig3_2 = px.line(
     bydate_mun,
     x='date',
