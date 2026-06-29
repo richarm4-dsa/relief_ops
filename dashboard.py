@@ -217,10 +217,10 @@ fig3_1 = px.bar(
     title='Supply Delivery by Municipality: Fulfilled Against Requested',
     #text='pct_delivered',
     labels={
-        'municipality': 'Municipality',
-        'value': 'Quantity',
-        'quantity_requested': 'Requested',
-        'quantity_delivered': 'Delivered'
+        'municipality':'Municipality',
+        'value':'Quantity',
+        'quantity_requested':'Requested',
+        'quantity_delivered':'Delivered'
     },
 )
 fig3_1.update_layout(legend_title_text='Delivery')
@@ -272,7 +272,7 @@ with tab2:
 # KPIs
 with tab3:
     st.header("Key Performance Indicators")
-    st.subheader(f"First {date_range} days")
+    st.subheader(f"DAY {date_range}")
     st.markdown("""
     """)
     st.plotly_chart(fig3_1, use_container_width=True)
