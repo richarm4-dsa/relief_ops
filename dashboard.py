@@ -263,7 +263,8 @@ with tab2:
     st.header("Recovery Status")
     st.subheader(f" ")
     st.markdown("""
-    """)
+    
+    """)    
     st.plotly_chart(fig2_1, use_container_width=True)
     st.plotly_chart(fig2_2, use_container_width=True)
 
@@ -272,6 +273,7 @@ with tab3:
     st.header("Key Performance Indicators")
     st.subheader(f"DAY {date_range}")
     st.markdown("""
+    
     """)
     st.plotly_chart(fig3_1, use_container_width=True)
     st.plotly_chart(fig3_2, use_container_width=True)
@@ -281,8 +283,39 @@ with tab4:
     st.header("Analysis and Recommended Actions")
     st.subheader(f" ")
     st.markdown("""
+    **Actions**
+    *Restore road access to Costa Sur's hospitals COS-088 and COS-092
+    *Assess Costa Sur's hospital COS-092, transfer any patients to Puerto Nuevo, and act to restore operation.
+    *Restore road access to Rincon del Este's hospitals.
+    *Restore the water treatment plant in Costa Sur, and ensure sufficient and timely water delivery.   
     
+    **Damage**
+    The eastern two municipalities, Rincon del Este and Costa Sur, were the hardest hit by the hurricane, 
+    and the bulk of their infrastruture remains non-operational, and in many cases inaccessible due to road 
+    outages. Puerto Nuevo and Bahia Verde sustained some damage, but critical infrastructure is operational. 
+    Sierra Alta retained facility operation, but some roads were affected. 
+
+    **Hospitals**  
+    Rincon del Este's hospitals are either operational or partly so, but road access is limited to both of them. 
+    With Rin-147 operational, there should be a high priority on clearing roads in that municipality. Otherwise 
+    the closest operational hospital is Cos-086 in Costa Sur. Roads should also be cleared to the other Rincon 
+    del Este hospital, Rin-140, so that recovery can begin there and in case patients need to be transferred. 
+    Emergencies can be transferred to the western municipalities if helicopter resources are available.  
+
+    Costa Sur has two operational hospitals, with no road access to Cos-088. Cos-092 is not operational, with 
+    limited road access. Priority on restoring road access to Cos-088 and restoring operation and access to Cos-092.
+
+    Bahia Verde, Sierra Alta and Puerto Nuevo hospitals are operational. Priorities in those municipalities 
+    should ensure road access to hospitals.  
+
+     **Water Treatment Facilities**
+    Costa Sur's water treatment plants are all operationally limited, and more than 30 miles from an operational 
+    alternative. Residents should be advised to conserve water. Priorities there should include water delivery, 
+    and restoring those facilities. Rincon del Este's water treatment plant is operational, but too far to be off 
+    help to Costa Sur.  
+    Bahia Verde, Sierra Alta and Puerto Nuevo water treatment plants are functioning.
     """)
+
 
 # About
 with tab5:
