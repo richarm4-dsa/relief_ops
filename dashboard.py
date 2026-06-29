@@ -249,7 +249,9 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Infrastructure", "Recovery", "Performan
 # Damage
 with tab1:
     st.header("Infrastructure and Damage Assessment")
-
+    st.markdown("""
+    Use the selector at left to filter the facilities in the map.
+    """)
     st_folium(m1, width=700, height=500)
     st.markdown("""
     A minimum radius should be maintained between hospitals and between water treatment plants. 
