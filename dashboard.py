@@ -249,10 +249,19 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Infrastructure", "Recovery", "Performan
 # Damage
 with tab1:
     st.header("Infrastructure and Damage Assessment")
-    st.subheader(f" ")
-    st.markdown("""
-    Filter the facility types using the selector in the left hand margin.
-    """)
+
+    # Compact filter bar (not sidebar, not columns)
+    selected_types = st.multiselect(
+        "Facility Types",
+        sorted(inf_df["facility_type"].unique()),
+        default=sorted(inf_df["facility_type"].unique()),
+        label_visibility="collapsed"
+    )
+
+    filtered_df = inf_df[
+        inf_df["facility_type"].isin(selected_types)
+    ]
+
     st_folium(m1, width=700, height=500)
     st.markdown("""
     A minimum radius should be maintained between hospitals and between water treatment plants. 
