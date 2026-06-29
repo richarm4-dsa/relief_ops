@@ -287,7 +287,9 @@ with tab4:
     *Restore road access to Costa Sur's hospitals COS-088 and COS-092.  
     *Assess Costa Sur's hospital COS-092, transfer any patients to Puerto Nuevo, and act to restore operation.  
     *Restore road access to Rincon del Este's hospitals.  
-    *Restore the water treatment plant in Costa Sur, and ensure sufficient and timely water delivery.   
+    *Restore the water treatment plant in Rincon del Este, and ensure sufficient and timely water delivery there.   
+    *Evaluate ports to find the reason for excess delivery delay for boat transport. If port facilities can't be
+    easily mitigated, shift capacity to other modes if possible.  
     
     **Damage**  
     The eastern two municipalities, Rincon del Este and Costa Sur, were the hardest hit by the hurricane, 
@@ -312,6 +314,14 @@ with tab4:
     and restoring those facilities. Rincon del Este's water treatment plant is operational, but too far to be off 
     help to Costa Sur.  
     Bahia Verde, Sierra Alta and Puerto Nuevo water treatment plants are functioning.  
+
+    **Delivery**  
+    All municipalities are receiving about 45-55% of requested supplies. Costa Sur and Rincon del Esta 
+    are receiving less than half of their requests. It is especially important that Rincon del Este receives
+    its water deliveries due to the condition of the water treatment plant.  
+    Boat delivery has shown to have the highest delivery delay. It is unclear whether that is due to port damage
+    or the transfer of supplies from the port to facilities. 
+    
     """)
 
 
