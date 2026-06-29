@@ -57,11 +57,10 @@ facility_icon = {'Supply Distribution Center':'truck',
             'Hospital':'h-square',
             'Communications Tower':'podcast'}
 
-selected_types = st.multiselect(
+selected_types = st.sidebar.multiselect(
     "Facility Types",
     sorted(inf_df["facility_type"].unique()),
-    default=sorted(inf_df["facility_type"].unique()),
-    label_visibility="collapsed"
+    default=sorted(inf_df["facility_type"].unique())
 )
 
 filtered_df = inf_df[
