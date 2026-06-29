@@ -96,6 +96,7 @@ legend_html = """
 """
 m1.get_root().html.add_child(folium.Element(legend_html))
 
+folium.LayerControl(collapsed=False).add_to(m1)
 
 
 # Hospital and water treatment infrastructure map
