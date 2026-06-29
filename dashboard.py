@@ -65,7 +65,7 @@ for _, row in inf_df.iterrows():
                   icon=folium.Icon(color=stat_color[row["operational_status"]],prefix='fa',icon=facility_icon[row['facility_type']])
                  ).add_to(m1)
    
-legend_html = '''
+legend0_html = '''
 <div style="position: fixed; 
      bottom: 50px; left: 50px; width: 200px; height: 100px; 
      border:2px solid grey; z-index:9999; font-size:14px;
@@ -76,6 +76,31 @@ legend_html = '''
      &nbsp; Not Operational &nbsp; <i class="fa fa-circle" style="color:red"></i><br>
 </div>
 '''
+
+legend_html = """
+<div style="
+     position: fixed; 
+     bottom: 50px; left: 50px; 
+     width: 240px;
+     z-index: 999999;
+     background-color: white;
+     border: 2px solid grey;
+     padding: 10px;
+     font-size: 14px;">
+     
+     <b style="color:black;">Facility Status</b><br>
+     
+     <span style="color:green; font-weight: bold;">●</span>
+     <span style="color:black;"> Operational</span><br>
+
+     <span style="color:orange; font-weight: bold;">●</span>
+     <span style="color:black;"> Partially Operational</span><br>
+
+     <span style="color:red; font-weight: bold;">●</span>
+     <span style="color:black;"> Not Operational</span><br>
+</div>
+"""
+
 m1.get_root().html.add_child(folium.Element(legend_html))
 
 
