@@ -57,15 +57,9 @@ facility_icon = {'Supply Distribution Center':'truck',
             'Hospital':'h-square',
             'Communications Tower':'podcast'}
 
-selected_types = st.multiselect(
-    "Facility Types",
-    sorted(inf_df["facility_type"].unique()),
-    default=sorted(inf_df["facility_type"].unique())
-)
-
-filtered_df = inf_df[
-    inf_df["facility_type"].isin(selected_types)
-]
+#filtered_df = inf_df[
+#    inf_df["facility_type"].isin(selected_types)
+#]
 
 m1 = folium.Map(location=map_center, zoom_start=8, tiles="CartoDB positron")
 
