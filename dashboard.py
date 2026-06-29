@@ -176,7 +176,7 @@ m2.get_root().html.add_child(folium.Element(legend_html))
 
 ### TAB 3 - Key Performance Indicators
 # Requested vs Delivered
-delivery = df.groupby('municipality')[['quantity_requested','quantity_delivered']].sum().reset_index()
+delivery = rel_df.groupby('municipality')[['quantity_requested','quantity_delivered']].sum().reset_index()
 fig3_1 = px.bar(
     delivery,
     x='municipality',
