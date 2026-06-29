@@ -194,6 +194,22 @@ fig3_1 = px.bar(
 fig3_1.update_layout(legend_title_text='Delivery')
 fig3_1.show()
 
+# Delay timeline
+bydate_mun = df.groupby(['date','municipality'], as_index=False)['delivery_delay_hours'].mean()
+fig3_2 = px.line(
+    bydate_mun,
+    x='date',
+    y='delivery_delay_hours',
+    color='municipality',
+    title=f'Mean Delivery Delay by Municipality, First {date_range} days',
+    labels={
+        'delivery_delay_hours': 'Delay (hours)',
+        'date': 'Date',
+        'municipality': 'Municipality'
+    },
+    )
+fig3_2.show()
+
 
 # Tab layout
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Infrastructure", "Recovery", "Performance", "Actions", "About"])
@@ -231,8 +247,7 @@ with tab3:
     
     """)
     st.plotly_chart(fig3_1, use_container_width=True)
-    #st.plotly_chart(fig2, use_container_width=True)
-    #st.plotly_chart(fig3, use_container_width=True)
+    st.plotly_chart(fig3_2, use_container_width=True)
 
 
 # Actions/Analyses
