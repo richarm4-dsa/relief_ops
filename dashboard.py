@@ -98,14 +98,13 @@ m2 = folium.Map(location=map_center, zoom_start=8, tiles="CartoDB positron")  #t
 
 rad_hosp_miles = 15
 rad_wt_miles = 30
-
 critical = ['Hospital','Water Treatment Plant']
 radius_m = [rad_hosp_miles*1609.34,rad_wt_miles*1609.34]  # Miles
 col = ['blue','grey']
 radius = dict(zip(critical,radius_m))
 color = dict(zip(critical,col))
 
-infr = df[df['facility_type'].isin(critical)]
+infr = infr_df[infr_df['facility_type'].isin(critical)]
 
 for _, row in infr.iterrows():   # radius circles
     folium.Circle(
