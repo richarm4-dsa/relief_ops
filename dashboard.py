@@ -104,9 +104,9 @@ col = ['blue','grey']
 radius = dict(zip(critical,radius_m))
 color = dict(zip(critical,col))
 
-infr = infr_df[infr_df['facility_type'].isin(critical)]
+infr = inf_df[infr_df['facility_type'].isin(critical)]
 
-for _, row in infr.iterrows():   # radius circles
+for _, row in inf.iterrows():   # radius circles
     folium.Circle(
         location=([row['latitude'],row['longitude']]),
         radius=radius[row['facility_type']],
@@ -116,7 +116,7 @@ for _, row in infr.iterrows():   # radius circles
         fill_opacity=0.2,
     ).add_to(m2)
 
-for _, row in infr.iterrows():   # Dots
+for _, row in inf.iterrows():   # Dots
     folium.Circle(location=[row['latitude'],row['longitude']],
                         radius=3, fill=True, fill_opacity=1,
                         popup=f"{row['municipality']}\n{row['facility_name'].rsplit(maxsplit=1)[-1]}\n{row['facility_type']}\n{code[row['operational_status']]}\nSeverity={row['damage_severity']}\nPop={row['population_served']}\nRoad Access: {row['road_access']}",
