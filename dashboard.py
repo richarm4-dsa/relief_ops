@@ -182,7 +182,7 @@ with tab1:
     st.header("Infrastructure and Damage Assessment")
     st.subheader(f" ")
     st.markdown("""
-    
+    Filter the facility types using the selector in the left hand margin.
     """)
     st_folium(m1, width=700, height=500)
     st.markdown("""
