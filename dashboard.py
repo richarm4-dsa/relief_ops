@@ -57,19 +57,33 @@ facility_icon = {'Supply Distribution Center':'truck',
             'Hospital':'h-square',
             'Communications Tower':'podcast'}
 
+selected_types = st.sidebar.multiselect(
+    "Facility Types",
+    sorted(inf_df["facility_type"].unique()),
+    default=sorted(inf_df["facility_type"].unique())
+)
+
+filtered_df = inf_df[
+    inf_df["facility_type"].isin(selected_types)
+]
+
 m1 = folium.Map(location=map_center, zoom_start=8, tiles="CartoDB positron")
 
-groups = {}
-
-for facility_type in inf_df['facility_type'].unique():
-    groups[facility_type] = folium.FeatureGroup(name=facility_type)
-    groups[facility_type].add_to(m1)
-
-for _, row in inf_df.iterrows():
-    folium.Marker(location=[row['latitude'],row['longitude']],
-                  popup=f"{row['municipality']}\n{row['facility_name'].rsplit(maxsplit=1)[-1]}\n{row['facility_type']}\nOpStatus={code[row['operational_status']]}\nSeverity={row['damage_severity']}\nPop={row['population_served']}",
-                  icon=folium.Icon(color=stat_color[row["operational_status"]],prefix='fa',icon=facility_icon[row['facility_type']])
-                 ).add_to(groups[row['facility_type']])
+for _, row in filtered_df.iterrows():
+    folium.Marker(
+        location=[row['latitude'], row['longitude']],
+        popup=f"{row['municipality']}\n"
+              f"{row['facility_name'].rsplit(maxsplit=1)[-1]}\n"
+              f"{row['facility_type']}\n"
+              f"OpStatus={code[row['operational_status']]}\n"
+              f"Severity={row['damage_severity']}\n"
+              f"Pop={row['population_served']}",
+        icon=folium.Icon(
+            color=stat_color[row["operational_status"]],
+            prefix='fa',
+            icon=facility_icon[row['facility_type']]
+        )
+    ).add_to(m1)
 
 legend_html = """
 <div style="
@@ -95,9 +109,6 @@ legend_html = """
 </div>
 """
 m1.get_root().html.add_child(folium.Element(legend_html))
-
-folium.LayerControl(collapsed=False).add_to(m1)
-
 
 # Hospital and water treatment infrastructure map
 # Show radius around hospitals and water treatment plants
