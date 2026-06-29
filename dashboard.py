@@ -88,8 +88,73 @@ legend_html = """
      <span style="color:black;"> Not Operational</span><br>
 </div>
 """
-
 m1.get_root().html.add_child(folium.Element(legend_html))
+
+
+
+# Hospital and water treatment infrastructure map
+# Show radius around hospitals and water treatment plants
+m2 = folium.Map(location=map_center, zoom_start=8, tiles="CartoDB positron")  #tiles="OpenStreetMap")
+
+rad_hosp_miles = 15
+rad_wt_miles = 30
+
+critical = ['Hospital','Water Treatment Plant']
+radius_m = [rad_hosp_miles*1609.34,rad_wt_miles*1609.34]  # Miles
+col = ['blue','grey']
+radius = dict(zip(critical,radius_m))
+color = dict(zip(critical,col))
+
+infr = df[df['facility_type'].isin(critical)]
+
+for _, row in infr.iterrows():   # radius circles
+    folium.Circle(
+        location=([row['latitude'],row['longitude']]),
+        radius=radius[row['facility_type']],
+        color=None,
+        fill=True,
+        fill_color=color[row["facility_type"]],
+        fill_opacity=0.2,
+    ).add_to(m2)
+
+for _, row in infr.iterrows():   # Dots
+    folium.Circle(location=[row['latitude'],row['longitude']],
+                        radius=3, fill=True, fill_opacity=1,
+                        popup=f"{row['municipality']}\n{row['facility_name'].rsplit(maxsplit=1)[-1]}\n{row['facility_type']}\n{code[row['operational_status']]}\nSeverity={row['damage_severity']}\nPop={row['population_served']}\nRoad Access: {row['road_access']}",
+                        color=stat_color[row["operational_status"]],
+                       ).add_to(m2)
+
+legend_html = """
+<div style="
+     position: fixed;
+     bottom: 50px;
+     left: 50px;
+     width: 260px;
+     z-index: 999999;
+     background-color: white;
+     border: 2px solid grey;
+     padding: 10px;
+     font-size: 14px;
+     color: black;
+     font-family: Arial;
+     opacity: 0.95;">
+
+    <b style="color:black;">Vital Infrastructure</b><br>
+
+    <span style="color:grey; font-weight:bold;">●</span>
+    <span style="color:black;"> Hospital Radius</span><br>
+
+    <span style="color:blue; font-weight:bold;">●</span>
+    <span style="color:black;"> Water Treatment Radius</span><br>
+
+    <span style="color:green; font-weight:bold;">●</span>
+    <span style="color:orange; font-weight:bold;">●</span>
+    <span style="color:red; font-weight:bold;">●</span>
+    <span style="color:black;"> Facility Status</span>
+
+</div>
+"""
+m2.get_root().html.add_child(folium.Element(legend_html))
 
 
 # Tab layout
