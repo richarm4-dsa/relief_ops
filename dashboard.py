@@ -176,7 +176,7 @@ m2.get_root().html.add_child(folium.Element(legend_html))
 
 ### TAB 2 - Recovery Status
 # Delivery delay by tx mode
-fig = px.box(
+fig2_1 = px.box(
     rel_df,
     x='municipality',
     y='delivery_delay_hours',
@@ -188,7 +188,7 @@ fig = px.box(
         'municipality': 'Municipality'
     },
 )
-fig.show()
+fig2_1.show()
 
 
 
@@ -251,9 +251,8 @@ with tab2:
     st.header("Recovery Status")
     st.subheader(f" ")
     st.markdown("""
-    
     """)
-    #st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig2_1, use_container_width=True)
     #st.plotly_chart(fig2, use_container_width=True)
     #st.plotly_chart(fig3, use_container_width=True)
 
