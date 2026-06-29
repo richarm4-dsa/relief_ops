@@ -201,7 +201,7 @@ fig3_2 = px.line(
     x='date',
     y='delivery_delay_hours',
     color='municipality',
-    title=f'Mean Delivery Delay by Municipality, First {date_range} days',
+    title=f'Mean Delivery Delay by Municipality',
     labels={
         'delivery_delay_hours': 'Delay (hours)',
         'date': 'Date',
@@ -242,9 +242,8 @@ with tab2:
 # KPIs
 with tab3:
     st.header("Key Performance Indicators")
-    st.subheader(f" ")
+    st.subheader(f"First {date_range} days")
     st.markdown("""
-    
     """)
     st.plotly_chart(fig3_1, use_container_width=True)
     st.plotly_chart(fig3_2, use_container_width=True)
