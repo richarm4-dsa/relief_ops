@@ -104,7 +104,7 @@ col = ['blue','grey']
 radius = dict(zip(critical,radius_m))
 color = dict(zip(critical,col))
 
-infr = inf_df[infr_df['facility_type'].isin(critical)]
+infr = inf_df[inf_df['facility_type'].isin(critical)]
 
 for _, row in inf.iterrows():   # radius circles
     folium.Circle(
