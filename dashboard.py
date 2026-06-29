@@ -116,7 +116,7 @@ for _, row in infr.iterrows():   # radius circles
         fill_opacity=0.2,
     ).add_to(m2)
 
-for _, row in inf.iterrows():   # Dots
+for _, row in infr.iterrows():   # Dots
     folium.Circle(location=[row['latitude'],row['longitude']],
                         radius=3, fill=True, fill_opacity=1,
                         popup=f"{row['municipality']}\n{row['facility_name'].rsplit(maxsplit=1)[-1]}\n{row['facility_type']}\n{code[row['operational_status']]}\nSeverity={row['damage_severity']}\nPop={row['population_served']}\nRoad Access: {row['road_access']}",
