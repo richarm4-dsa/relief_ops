@@ -328,7 +328,8 @@ with tab4:
 # About
 with tab5:
     st.header("About")
-    st.subheader(f" ")
+    #st.subheader(f" ")
     st.markdown("""
-    
+    DSA506 Visual Analytics and Communications    
+    Michelle Richardson   
     """)
