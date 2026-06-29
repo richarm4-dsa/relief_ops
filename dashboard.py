@@ -57,9 +57,9 @@ facility_icon = {'Supply Distribution Center':'truck',
             'Hospital':'h-square',
             'Communications Tower':'podcast'}
 
-#filtered_df = inf_df[
-#    inf_df["facility_type"].isin(selected_types)
-#]
+filtered_df = inf_df[
+    inf_df["facility_type"].isin(selected_types)
+]
 
 m1 = folium.Map(location=map_center, zoom_start=8, tiles="CartoDB positron")
 
@@ -251,10 +251,6 @@ with tab1:
         default=sorted(inf_df["facility_type"].unique()),
         label_visibility="collapsed"
     )
-
-    filtered_df = inf_df[
-        inf_df["facility_type"].isin(selected_types)
-    ]
 
     st_folium(m1, width=700, height=500)
     st.markdown("""
